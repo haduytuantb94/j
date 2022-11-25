@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		a {
+			text-decoration: none;
+		}
+		.menu {
+			display: flex;
+			gap: 20px;
+		}
+		li {
+			list-style-type: none;
+		}
+		.menu-child {
+			position: absolute;
+			right: 0;
+			display: none;
+		}
+		.li-item {
+			position: relative;
+		}
+		ul.menu > li {
+            width: 7%;
+         }
+        ul.menu-child {
+           width: 100%;
+        }
+        .menu-child li {
+        	margin: 15px 0;
+        	border-bottom: 1px solid #eee;
+        }
+	</style>
+</head>
+<body>
+	<ul class="menu">
+		<li><a href="https://vnexpress.net">Item1</a></li>
+		<li class="li-item" onclick="#"><a href="">Item2</a>
+			<ul class="menu-child">
+				<li onclick="window.location.href='https://vnexpress.net'"><a href="https://vnexpress.net">Item-child1</a></li>
+				<li onclick="window.location.href='https://vnexpress.net'"><a href="https://vnexpress.net">Item-child2</a></li>
+				<li onclick="window.location.href='https://vnexpress.net'"><a href="https://vnexpress.net">Item-child3</a></li>
+			</ul>
+		</li>
+		<li><a href="https://vnexpress.net">Item3</a></li>
+	</ul>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.li-item').on('click',function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			var xxx = "window.location.href='https://vnexpress.net'";
+			$(this).attr('onclick',xxx);
+			$('.menu-child').show();
+		})
+	})
+</script>
+</html>
